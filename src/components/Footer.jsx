@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="footer footer-center bg-black text-primary-content  p-10 fixed bottom-0 ">
+    <footer className="footer footer-center bg-black text-primary-content  p-10  ">
       <aside>
         <p className="font-bold">
           DevConnect Ltd.

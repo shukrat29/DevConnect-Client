@@ -24,7 +24,7 @@ const Navbar = () => {
   };
   return (
     <>
-      <div className="navbar">
+      <div className="navbar bg-neutral">
         <div className="flex-1">
           <Link to="/" className="btn btn-ghost text-xl text-white">
             DevConnect
@@ -59,7 +59,10 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
-                  <a>Settings</a>
+                  <Link to="/connections">Friends</Link>
+                </li>
+                <li>
+                  <Link to="/requests">Requests</Link>
                 </li>
                 <li>
                   <a onClick={handleLogout}>Logout</a>
