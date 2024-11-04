@@ -1,11 +1,24 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { addRequest } from "../utils/requestSlice";
+import { addRequest, removeRequest } from "../utils/requestSlice";
 
 const Requests = () => {
   const dispatch = useDispatch();
   const request = useSelector((store) => store.request);
+
+  const reviewRequest = async (status, _id) => {
+    try {
+      // API Call to accept or reject request
+      const res = await axios.post(
+        import.meta.env.VITE_BASE_URL + "/request/review/" + status + "/" + _id,
+        {},
+        { withCredentials: true }
+      );
+      dispatch(removeRequest(_id));
+    } catch (error) {}
+  };
+
   const getRequsts = async () => {
     try {
       const res = await axios.get(
@@ -44,12 +57,22 @@ const Requests = () => {
             </div>
             <div className="text-left mx-4">
               <h2>{firstName + " " + lastName}</h2>
-              {age && gender && <P>{age + " " + gender}</P>}
+              {age && gender && <p>{age + " " + gender}</p>}
               <p>{about}</p>
             </div>
             <div className="card-actions my-4 flex">
-              <button className="btn btn-error text-white mx-2">Reject</button>
-              <button className="btn btn-primary mx-2">Accept</button>
+              <button
+                className="btn btn-error text-white mx-2"
+                onClick={() => reviewRequest("rejected", conn._id)}
+              >
+                Reject
+              </button>
+              <button
+                className="btn btn-primary mx-2"
+                onClick={() => reviewRequest("accepted", conn._id)}
+              >
+                Accept
+              </button>
             </div>
           </div>
         );
