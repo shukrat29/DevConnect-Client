@@ -24,7 +24,7 @@ const Navbar = () => {
   };
   return (
     <>
-      <div className="navbar bg-neutral">
+      <div className="navbar bg-neutral p-4 pr-10">
         <div className="flex-1">
           <Link to="/" className="btn btn-ghost text-xl text-white">
             DevConnect
@@ -32,7 +32,7 @@ const Navbar = () => {
         </div>
 
         {user && (
-          <div className="flex-none gap-2">
+          <div className="flex-none gap-1">
             <div className="form-control text-white">
               Welcome, {user.firstName}
             </div>
@@ -63,6 +63,9 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link to="/requests">Requests</Link>
+                </li>
+                <li>
+                  <Link to="/premium">Premium</Link>
                 </li>
                 <li>
                   <a onClick={handleLogout}>Logout</a>
